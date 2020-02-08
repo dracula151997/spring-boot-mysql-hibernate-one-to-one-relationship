@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_udemy" default="compile.module.udemy">
+  <dirname property="module.udemy.basedir" file="${ant.file.module_udemy}"/>
+  
+  <property name="module.jdk.home.udemy" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.udemy" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.udemy" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.udemy" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="udemy.output.dir" value="undefined"/>
+  <property name="udemy.testoutput.dir" value="undefined"/>
+  
+  <path id="udemy.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="udemy.module.production.classpath">
+    <path refid="${module.jdk.classpath.udemy}"/>
+  </path>
+  
+  <path id="udemy.runtime.production.module.classpath"/>
+  
+  <path id="udemy.module.classpath">
+    <path refid="${module.jdk.classpath.udemy}"/>
+  </path>
+  
+  <path id="udemy.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.udemy">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.udemy">
+    <patternset refid="excluded.from.module.udemy"/>
+  </patternset>
+  
+  
+  <target name="compile.module.udemy" depends="compile.module.udemy.production,compile.module.udemy.tests" description="Compile module udemy"/>
+  
+  <target name="compile.module.udemy.production" depends="register.custom.compilers" description="Compile module udemy; production classes"/>
+  
+  <target name="compile.module.udemy.tests" depends="register.custom.compilers,compile.module.udemy.production" description="compile module udemy; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.udemy" description="cleanup module">
+    <delete dir="${udemy.output.dir}"/>
+    <delete dir="${udemy.testoutput.dir}"/>
+  </target>
+</project>

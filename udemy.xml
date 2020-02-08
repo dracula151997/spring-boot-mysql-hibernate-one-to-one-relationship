@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="udemy" default="all">
+  
+  
+  <property file="udemy.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.klib"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
+  <path id="jdk.classpath.11">
+    <fileset dir="${jdk.home.11}">
+      <include name="../java-11-oracle!/java.base"/>
+      <include name="../java-11-oracle!/java.compiler"/>
+      <include name="../java-11-oracle!/java.datatransfer"/>
+      <include name="../java-11-oracle!/java.desktop"/>
+      <include name="../java-11-oracle!/java.instrument"/>
+      <include name="../java-11-oracle!/java.logging"/>
+      <include name="../java-11-oracle!/java.management"/>
+      <include name="../java-11-oracle!/java.management.rmi"/>
+      <include name="../java-11-oracle!/java.naming"/>
+      <include name="../java-11-oracle!/java.net.http"/>
+      <include name="../java-11-oracle!/java.prefs"/>
+      <include name="../java-11-oracle!/java.rmi"/>
+      <include name="../java-11-oracle!/java.scripting"/>
+      <include name="../java-11-oracle!/java.se"/>
+      <include name="../java-11-oracle!/java.security.jgss"/>
+      <include name="../java-11-oracle!/java.security.sasl"/>
+      <include name="../java-11-oracle!/java.smartcardio"/>
+      <include name="../java-11-oracle!/java.sql"/>
+      <include name="../java-11-oracle!/java.sql.rowset"/>
+      <include name="../java-11-oracle!/java.transaction.xa"/>
+      <include name="../java-11-oracle!/java.xml"/>
+      <include name="../java-11-oracle!/java.xml.crypto"/>
+      <include name="../java-11-oracle!/jdk.accessibility"/>
+      <include name="../java-11-oracle!/jdk.aot"/>
+      <include name="../java-11-oracle!/jdk.attach"/>
+      <include name="../java-11-oracle!/jdk.charsets"/>
+      <include name="../java-11-oracle!/jdk.compiler"/>
+      <include name="../java-11-oracle!/jdk.crypto.cryptoki"/>
+      <include name="../java-11-oracle!/jdk.crypto.ec"/>
+      <include name="../java-11-oracle!/jdk.dynalink"/>
+      <include name="../java-11-oracle!/jdk.editpad"/>
+      <include name="../java-11-oracle!/jdk.hotspot.agent"/>
+      <include name="../java-11-oracle!/jdk.httpserver"/>
+      <include name="../java-11-oracle!/jdk.internal.ed"/>
+      <include name="../java-11-oracle!/jdk.internal.jvmstat"/>
+      <include name="../java-11-oracle!/jdk.internal.le"/>
+      <include name="../java-11-oracle!/jdk.internal.opt"/>
+      <include name="../java-11-oracle!/jdk.internal.vm.ci"/>
+      <include name="../java-11-oracle!/jdk.internal.vm.compiler"/>
+      <include name="../java-11-oracle!/jdk.internal.vm.compiler.management"/>
+      <include name="../java-11-oracle!/jdk.jartool"/>
+      <include name="../java-11-oracle!/jdk.javadoc"/>
+      <include name="../java-11-oracle!/jdk.jcmd"/>
+      <include name="../java-11-oracle!/jdk.jconsole"/>
+      <include name="../java-11-oracle!/jdk.jdeps"/>
+      <include name="../java-11-oracle!/jdk.jdi"/>
+      <include name="../java-11-oracle!/jdk.jdwp.agent"/>
+      <include name="../java-11-oracle!/jdk.jfr"/>
+      <include name="../java-11-oracle!/jdk.jlink"/>
+      <include name="../java-11-oracle!/jdk.jshell"/>
+      <include name="../java-11-oracle!/jdk.jsobject"/>
+      <include name="../java-11-oracle!/jdk.jstatd"/>
+      <include name="../java-11-oracle!/jdk.localedata"/>
+      <include name="../java-11-oracle!/jdk.management"/>
+      <include name="../java-11-oracle!/jdk.management.agent"/>
+      <include name="../java-11-oracle!/jdk.management.jfr"/>
+      <include name="../java-11-oracle!/jdk.naming.dns"/>
+      <include name="../java-11-oracle!/jdk.naming.rmi"/>
+      <include name="../java-11-oracle!/jdk.net"/>
+      <include name="../java-11-oracle!/jdk.pack"/>
+      <include name="../java-11-oracle!/jdk.rmic"/>
+      <include name="../java-11-oracle!/jdk.scripting.nashorn"/>
+      <include name="../java-11-oracle!/jdk.scripting.nashorn.shell"/>
+      <include name="../java-11-oracle!/jdk.sctp"/>
+      <include name="../java-11-oracle!/jdk.security.auth"/>
+      <include name="../java-11-oracle!/jdk.security.jgss"/>
+      <include name="../java-11-oracle!/jdk.unsupported"/>
+      <include name="../java-11-oracle!/jdk.unsupported.desktop"/>
+      <include name="../java-11-oracle!/jdk.xml.dom"/>
+      <include name="../java-11-oracle!/jdk.zipfs"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.11}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.11}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.11"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/.idea/module_udemy.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.udemy" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.udemy" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
