@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "instructor")
@@ -11,7 +13,7 @@ The relationship between instructor table and instructor_detail table.
 public class Instructor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -24,7 +26,13 @@ public class Instructor {
     @Column(name = "email")
     private String email;
 
-    
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "instructor",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                    CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Course> courses;
+
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
@@ -76,6 +84,28 @@ public class Instructor {
 
     public InstructorDetail getInstructorDetail() {
         return instructorDetail;
+    }
+
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    /**
+     * Convenience method for bi-directional relationship
+     *
+     * @param course: Instructor course
+     */
+    public void addCourse(Course course) {
+        if (courses == null)
+            courses = new ArrayList<>();
+
+        courses.add(course);
+        course.setInstructor(this);
     }
 
     @Override
